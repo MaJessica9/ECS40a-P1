@@ -1,6 +1,7 @@
 all: city
 
 city: main.o 
+	g++ -ansi -Wall -g main.o -o city
 
 main.o: main.cpp city.o vector.o
 	g++ -ansi -Wall -g main.cpp city.o vector.o -o main.o
@@ -12,4 +13,4 @@ vector.o: vector.cpp vector.h
 	g++ -ansi -Wall -g vector.cpp vector.h -o vector.o
 
 clean:
-	rm main.o city.o vector.o
+	rm main.o city.o vector.o city
