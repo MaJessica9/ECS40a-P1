@@ -1,16 +1,14 @@
-all: city
+sim.out: main.o vector.o city.o
+	g++ -Wall -ansi -g -o sim.out main.o vector.o city.o
 
-city: main.o 
-	g++ -ansi -Wall -g main.o -o city
+main.o: main.cpp vector.h
+	g++ -Wall -ansi -g -c main.cpp
 
-main.o: main.cpp city.o vector.o
-	g++ -ansi -Wall -g main.cpp city.o vector.o -o main.o
+vector.o: vector.cpp vector.h city.h
+	g++ -Wall -ansi -g -c vector.cpp
 
 city.o: city.cpp city.h
-	g++ -ansi -Wall -g city.cpp city.h -o city.o
+	g++ -Wall -ansi -g -c city.cpp
 
-vector.o: vector.cpp vector.h
-	g++ -ansi -Wall -g vector.cpp vector.h -o vector.o
-
-clean:
-	rm main.o city.o vector.o city
+clean: 
+	rm main.o vector.o city.o
